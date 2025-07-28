@@ -1,0 +1,11 @@
+{
+    "name": "@compay/components",
+    "version": "1.0.0",
+    "main": "index.ts",
+    "private": true,
+    "dependencies": {
+        "@radix-ui/react-dialog": "1.1.14",
+        "@radix-ui/react-navigation-menu": "1.2.13",
+        "@radix-ui/react-slot": "1.2.3"
+    }
+}
