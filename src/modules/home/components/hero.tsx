@@ -9,7 +9,7 @@ import Image from 'next/image';
 const Hero: React.FC = () => {
     return (
         <SectionLayout
-            className="relative py-12 md:py-28 px-8 sm:px-12 md:px-24 overflow-x-clip bg-sidebar-background h-screen text-center overflow-clip"
+            className="relative py-12 md:py-32 px-8 sm:px-12 md:px-24 overflow-x-clip bg-sidebar-background h-screen text-center overflow-clip"
             containerClassName="space-y-12"
         >
             <HeroBgMesh className="absolute top-0 left-0 z-10" />
