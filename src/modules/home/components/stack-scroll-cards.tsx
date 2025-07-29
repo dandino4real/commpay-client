@@ -170,7 +170,7 @@ const cardData: CardData[] = [
 
 const StackScrollCards: React.FC = () => {
     return (
-        <SectionLayout className="px-8 py-0 sm:px-12 md:px-36">
+        <SectionLayout className="px-8 pb-16 sm:px-12 md:px-36">
             <div className="relative flex flex-col gap-16">
                 {cardData.map((card, index) => (
                     <div
