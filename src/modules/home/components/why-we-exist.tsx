@@ -42,14 +42,21 @@ const WhyWeExist: React.FC = () => {
                         <Image width={220} height={254} alt="efficiency" src="/assets/images/3d-cards.png" />
                     </div>
                 </div>
-                <div className="bg-gradient-to-r to-[hsla(0,0%,91%,1)] from-[hsla(0,0%,100%,1)] rounded-2xl p-8 h-full space-y-6 items-center justify-center shadow-sm">
+                <div className="relative bg-gradient-to-r to-[hsla(0,0%,91%,1)] from-[hsla(0,0%,100%,1)] rounded-2xl p-8 h-full space-y-6 items-center justify-center shadow-sm">
                     <Badge>• Our Mission</Badge>
                     <Image
-                        width={220}
-                        height={254}
+                        width={1000}
+                        height={500}
                         alt="secured"
-                        className="w-full"
+                        className="w-11/12"
                         src="/assets/images/secured-3d.png"
+                    />
+                     <Image
+                        width={1000}
+                        height={1000}
+                        alt="group-transact"
+                        className="w-min absolute top-86 right-20"
+                        src="/assets/images/group-transact.png"
                     />
                     <div className="gap-6 w-full flex">
                         <h4 className="text-2xl">To Simplify Global Payments</h4>

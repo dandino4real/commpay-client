@@ -29,7 +29,7 @@ const Hero: React.FC = () => {
                 width={803}
                 height={455}
                 alt="product-shot"
-                className="w-full z-10 relative"
+                className="w-10/12 mx-auto z-10 relative"
                 src="/assets/images/dashboard-screenshot.png"
             />
             <Image
