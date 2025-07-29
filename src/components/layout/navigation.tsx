@@ -17,9 +17,26 @@ import { navigationCTARoutes, navigationRoutes } from '@/constants/navigation';
 
 const Navigation: React.FC = () => {
     const currentRoute = useCurrentRoute();
+    const [hidden, setHidden] = React.useState(false);
+
+    React.useEffect(() => {
+        const hero = document.getElementById('hero-section');
+        const heroHeight = hero ? hero.offsetHeight : 600; // fallback height
+        const onScroll = () => {
+            setHidden(window.scrollY > heroHeight);
+        };
+        window.addEventListener('scroll', onScroll);
+        return () => window.removeEventListener('scroll', onScroll);
+    }, []);
 
     return (
-        <NavigationMenu className="w-full py-8 px-8 sm:px-12 md:px-24 bg-transparent justify-between fixed top-0 shadow-sm">
+        <NavigationMenu
+            className={cn(
+                'w-full py-8 px-8 sm:px-12 md:px-24 justify-between fixed top-0 shadow-none backdrop-blur-sm transition-opacity duration-300',
+                hidden ? 'opacity-0 pointer-events-none' : 'opacity-100'
+            )}
+        >
+            <HeroBgMesh className="absolute top-0 left-0" />
             <NavigationMenuList className="w-full flex justify-between">
                 <NavigationMenuItem>
                     <NavigationMenuLink
@@ -109,6 +126,7 @@ import { Sheet, SheetClose, SheetContent, SheetTrigger } from '../../components/
 import { MenuIcon } from 'lucide-react';
 import useCurrentRoute from '../../hooks/use-current-route';
 import SupportIcon from '../icons/support';
+import HeroBgMesh from '../icons/hero-bg-mesh';
 
 const MobileNavigation: React.FC<{ currentRoute: ReturnType<typeof useCurrentRoute> }> = ({ currentRoute }) => {
     return (

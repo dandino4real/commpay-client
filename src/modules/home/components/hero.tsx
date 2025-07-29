@@ -9,30 +9,37 @@ import Image from 'next/image';
 const Hero: React.FC = () => {
     return (
         <SectionLayout
-            className="relative py-12 md:py-32 px-8 sm:px-12 md:px-24 overflow-x-clip bg-sidebar-background h-screen text-center overflow-clip"
+            id="hero-section"
             containerClassName="space-y-12"
+            className="relative py-12 md:py-32 px-8 sm:px-12 md:px-24 overflow-x-clip bg-sidebar-background h-screen text-center overflow-clip"
         >
-            <HeroBgMesh className="absolute top-0 left-0 z-10" />
-
-            <h1 className="text-4xl md:text-7xl font-semibold text-white">
+            <h1 className="text-4xl md:text-7xl font-semibold text-white z-10">
                 <span>Seamless</span> <span className="italic text-accent">Payment</span>{' '}
                 <span>
                     Solutions <br /> For Africa & Beyond
                 </span>
             </h1>
-            <Button className="gap-4">
+            <Button className="gap-4 z-10">
                 Get Started
                 <span>
                     <UpRightIcon />
                 </span>
             </Button>
             <Image
-                className="w-full"
+                width={803}
+                height={455}
                 alt="product-shot"
-                width={803.07568359375}
-                height={455.3599853515625}
+                className="w-full z-10 relative"
                 src="/assets/images/dashboard-screenshot.png"
             />
+            <Image
+                width={1108}
+                height={477}
+                alt="product-shot-shadow"
+                src="/assets/images/ellipse-shadow.png"
+                className="w-full absolute -bottom-16 left-1/2 -translate-x-1/2"
+            />
+            <HeroBgMesh className="absolute top-0 left-0" />
         </SectionLayout>
     );
 };
