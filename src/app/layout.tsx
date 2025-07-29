@@ -1,14 +1,15 @@
 import React from 'react';
 
 import type { Metadata } from 'next';
-import { DM_Sans } from 'next/font/google';
+import { Inter } from 'next/font/google';
 
 import './globals.css';
 
 import { cn } from '@/lib/utils';
 import Navigation from '@/components/layout/navigation';
+import Footer from '@/modules/home/components/footer';
 
-const dm_sans = DM_Sans({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
     title: 'CompPay',
@@ -18,9 +19,10 @@ export const metadata: Metadata = {
 const RootLayout: React.FC<Readonly<{ children: React.ReactNode }>> = ({ children }) => {
     return (
         <html lang="en">
-            <body className={cn(dm_sans.className)}>
+            <body className={cn(inter.className)}>
                 <Navigation />
                 {children}
+                <Footer />
             </body>
         </html>
     );
