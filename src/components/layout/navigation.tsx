@@ -32,7 +32,7 @@ const Navigation: React.FC = () => {
     return (
         <NavigationMenu
             className={cn(
-                'w-full py-8 px-8 sm:px-12 md:px-24 justify-between fixed top-0 shadow-none backdrop-blur-sm transition-opacity duration-300',
+                'w-full py-8 px-8 sm:px-12 md:px-24 justify-between fixed top-0 shadow-none backdrop-blur-sm transition-opacity duration-300 overflow-clip',
                 hidden ? 'opacity-0 pointer-events-none' : 'opacity-100'
             )}
         >

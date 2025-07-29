@@ -2,10 +2,11 @@ import React from 'react';
 
 import SectionLayout from '@/components/layout/section-layout';
 import Image from 'next/image';
+import { Badge } from '@/components/ui/badge';
 
 const WhyWeExist: React.FC = () => {
     return (
-        <SectionLayout className="py-12 md:py-24 px-8 sm:px-12 md:px-36" containerClassName="space-y-18">
+        <SectionLayout className="py-12 md:py-24 px-8 sm:px-12 md:px-36" containerClassName="space-y-24">
             <div className="flex gap-4 md:gap-8 items-center md:px-48">
                 <h3 className="text-4xl font-semibold min-w-max">Why We Exist</h3>
                 <p className="font-light w-full">
@@ -42,6 +43,7 @@ const WhyWeExist: React.FC = () => {
                     </div>
                 </div>
                 <div className="bg-gradient-to-r to-[hsla(0,0%,91%,1)] from-[hsla(0,0%,100%,1)] rounded-2xl p-8 h-full space-y-6 items-center justify-center shadow-sm">
+                    <Badge>• Our Mission</Badge>
                     <Image
                         width={220}
                         height={254}

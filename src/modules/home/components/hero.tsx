@@ -37,7 +37,7 @@ const Hero: React.FC = () => {
                 height={477}
                 alt="product-shot-shadow"
                 src="/assets/images/ellipse-shadow.png"
-                className="w-full absolute -bottom-16 left-1/2 -translate-x-1/2"
+                className="w-full scale-110 absolute -bottom-16 left-1/2 -translate-x-1/2"
             />
             <HeroBgMesh className="absolute top-0 left-0" />
         </SectionLayout>
