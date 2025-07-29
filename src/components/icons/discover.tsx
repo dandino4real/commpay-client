@@ -47,12 +47,12 @@ const DiscoverIcon: React.FC<IconProps> = ({ ...props }) => {
                     y2="18.2283"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#F89F20" />
-                    <stop offset="0.25" stop-color="#F79A20" />
-                    <stop offset="0.53" stop-color="#F68D20" />
-                    <stop offset="0.62" stop-color="#F58720" />
-                    <stop offset="0.72" stop-color="#F48120" />
-                    <stop offset="1" stop-color="#F37521" />
+                    <stop stopColor="#F89F20" />
+                    <stop offset="0.25" stopColor="#F79A20" />
+                    <stop offset="0.53" stopColor="#F68D20" />
+                    <stop offset="0.62" stopColor="#F58720" />
+                    <stop offset="0.72" stopColor="#F48120" />
+                    <stop offset="1" stopColor="#F37521" />
                 </linearGradient>
                 <linearGradient
                     id="paint1_linear_521_670"
@@ -62,10 +62,10 @@ const DiscoverIcon: React.FC<IconProps> = ({ ...props }) => {
                     y2="10.8089"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#F58720" />
-                    <stop offset="0.36" stop-color="#E16F27" />
-                    <stop offset="0.7" stop-color="#D4602C" />
-                    <stop offset="0.98" stop-color="#D05B2E" />
+                    <stop stopColor="#F58720" />
+                    <stop offset="0.36" stopColor="#E16F27" />
+                    <stop offset="0.7" stopColor="#D4602C" />
+                    <stop offset="0.98" stopColor="#D05B2E" />
                 </linearGradient>
             </defs>
         </svg>
