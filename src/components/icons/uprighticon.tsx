@@ -9,7 +9,6 @@ const UpRightIcon: React.FC<IconProps> = ({ size = 12, ...props }) => {
                 stroke="#F2F9FE"
                 strokeWidth="1.5"
                 strokeLinecap="round"
-                strokeLinecap="round"
             />
         </svg>
     );
