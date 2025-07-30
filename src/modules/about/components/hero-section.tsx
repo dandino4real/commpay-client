@@ -7,7 +7,7 @@ import SectionLayout from "@/components/layout/section-layout"
 
 export function HeroSection() {
   return (
-    <SectionLayout className=" px-4 sm:px-6 lg:px-20 py-16 lg:py-32 relative bg-[url('/assets/images/background-hero-bg.png')] bg-cover bg-center text-white max-w-6xl mx-auto rounded-4xl">
+    <SectionLayout className=" px-4 sm:px-6 lg:px-20 py-16 lg:py-24 relative bg-[url('/assets/images/background-hero-bg.png')] bg-cover bg-center text-white max-w-6xl mx-auto rounded-4xl">
 
       <div className="grid lg:grid-cols-3 gap-12 items-center">
         <div className="space-y-8 col-span-2">
