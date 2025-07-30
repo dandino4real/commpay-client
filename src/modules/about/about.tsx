@@ -8,6 +8,7 @@ import { CoreValuesSection } from "./components/core-values-section"
 import { TeamSection } from "./components/team-section"
 import { WhatSetsUsApartSection } from "./components/what-sets-up-apart-section"
 import { HeroSection } from "./components/hero-section"
+// import Partners from "../home/components/partners"
 
 
 
@@ -16,6 +17,7 @@ export default function About() {
         <div className="min-h-screen">
             <WhyChooseSection />
             <PaymentPartnersSection />
+            {/* <Partners /> */}
             <NorthStarSection />
             <CoreValuesSection />
             <TeamSection />

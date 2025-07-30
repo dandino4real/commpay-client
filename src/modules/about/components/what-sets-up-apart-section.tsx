@@ -2,6 +2,8 @@
 import Image from "next/image"
 import * as motion from "motion/react-client"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
+import { Badge } from "@/components/ui/badge"
+import SectionLayout from "@/components/layout/section-layout"
 
 interface FeatureCardProps {
   title: string
@@ -69,36 +71,33 @@ function FeatureCard({ title, description, imageUrl }: FeatureCardProps) {
 
 export function WhatSetsUsApartSection() {
   return (
-    <div className="relative overflow-hidden">
-      <div className="py-20 lg:pt-28 lg:pb:5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <span className="inline-block text-emerald-500 text-sm font-medium bg-emerald-50 px-4 py-2 rounded-full">
-              <strong>•</strong> What Sets Us Apart
-            </span>
-          </div>
 
-          <Carousel
-            opts={{ align: "start", loop: true }}
-            className="w-full max-w-7xl mx-auto"
-          >
-            <CarouselContent className="-mr-8">
-              {features.map((feature, index) => (
-                <CarouselItem
-                  key={index}
-                  className="pl-4 md:basis-1/2 lg:basis-1/4"
-                >
-                  <FeatureCard {...feature} />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="flex justify-center mt-6 gap-4">
-              <CarouselPrevious className="bg-white shadow-md" />
-              <CarouselNext className="bg-white shadow-md" />
-            </div>
-          </Carousel>
-        </div>
+
+    <SectionLayout className="py-12 md:py-32 px-8 sm:px-12 md:px-24 ">
+
+      <div className="text-center mb-16">
+        <Badge>• What Sets Us Apart</Badge>
       </div>
-    </div>
+
+      <Carousel
+        opts={{ align: "start", loop: true }}
+        className="w-full max-w-7xl mx-auto"
+      >
+        <CarouselContent className="-mr-8">
+          {features.map((feature, index) => (
+            <CarouselItem
+              key={index}
+              className="pl-4 md:basis-1/2 lg:basis-1/4"
+            >
+              <FeatureCard {...feature} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <div className="flex justify-center mt-6 gap-4">
+          <CarouselPrevious className="bg-white shadow-md" />
+          <CarouselNext className="bg-white shadow-md" />
+        </div>
+      </Carousel>
+    </SectionLayout>
   )
 }

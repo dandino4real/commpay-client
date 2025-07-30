@@ -1,13 +1,14 @@
 
-
 import * as motion from "motion/react-client"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowUpRight, ArrowRight } from "lucide-react"
+import { Badge } from "@/components/ui/badge"
+import SectionLayout from "@/components/layout/section-layout"
 
 export function TeamSection() {
   return (
-    <div className="py-16 lg:py-24 bg-[url('/assets/images/core-values-bg2.png')] bg-cover bg-center text-white relative overflow-hidden">
+    <SectionLayout className="py-16 lg:py-24 bg-[url('/assets/images/core-values-bg2.png')] bg-cover bg-center text-white relative overflow-hidden">
       {/* Animated background decorative elements */}
       <div className="absolute inset-0 opacity-10">
         <motion.div
@@ -80,11 +81,8 @@ export function TeamSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="mb-12">
           <div className="flex items-center space-x-3 mb-8">
-            <span
-              className="text-sm font-medium"
-            >
-              • Our Team
-            </span>
+            <Badge className="bg-transparent text-fff">• Our Team</Badge>
+
             <div >
               <ArrowRight className="h-4 w-4" />
             </div>
@@ -95,13 +93,13 @@ export function TeamSection() {
           <motion.div
 
             className="relative"
-         initial={{ scale: 1 }}
-          whileHover={{
-            scale: 1.03,
-            transition: { duration: 1, ease: "easeInOut" },
-          }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-            >
+            initial={{ scale: 1 }}
+            whileHover={{
+              scale: 1.03,
+              transition: { duration: 1, ease: "easeInOut" },
+            }}
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+          >
             <motion.div
               className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 to-blue-500/20 rounded-2xl blur-xl"
               animate={{
@@ -116,8 +114,8 @@ export function TeamSection() {
             />
             <motion.div
               className="relative rounded-2xl overflow-hidden shadow-2xl"
-              initial={{ opacity: 0, scale: 0.9, rotateY: -15 }}
-              animate={{ opacity: 1, scale: 1, rotateY: 0 }}
+              initial={{ opacity: 0, scale: 1, rotateY: -15 }}
+              animate={{ opacity: 1, scale: 1.1, rotateY: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
               whileHover={{
                 rotateY: 5,
@@ -129,7 +127,6 @@ export function TeamSection() {
                 alt="Team collaboration"
                 width={600}
                 height={400}
-                className="w-full h-auto"
               />
 
               {/* Overlay gradient on hover */}
@@ -169,7 +166,7 @@ export function TeamSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.9 }}
             >
-              <Button className="bg-slate-700 hover:bg-slate-600 text-white border-slate-600 group rounded-full" size="lg">
+              <Button className="bg-slate-700 hover:bg-slate-600 text-white border-slate-600 group " >
                 <motion.span className="flex items-center" whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
                   Learn More
                   <motion.div
@@ -189,6 +186,6 @@ export function TeamSection() {
           </motion.div>
         </div>
       </div>
-    </div>
+    </SectionLayout>
   )
 }
