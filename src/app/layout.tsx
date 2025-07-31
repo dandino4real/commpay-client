@@ -1,7 +1,7 @@
 import React from 'react';
 
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 
 import './globals.css';
 
@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import Navigation from '@/components/layout/navigation';
 import Footer from '@/modules/home/components/footer';
 
-const inter = Inter({ subsets: ['latin'] });
+const plusJakartaSans = Plus_Jakarta_Sans();
 
 export const metadata: Metadata = {
     title: 'CompPay',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const RootLayout: React.FC<Readonly<{ children: React.ReactNode }>> = ({ children }) => {
     return (
         <html lang="en">
-            <body className={cn(inter.className)}>
+            <body className={cn(plusJakartaSans.className)}>
                 <Navigation />
                 {children}
                 <Footer />
