@@ -1,7 +1,7 @@
 import { cn } from '../../lib/utils';
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
-interface SectionLayoutProps extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
+export interface SectionLayoutProps extends DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> {
     containerClassName?: string;
 }
 
