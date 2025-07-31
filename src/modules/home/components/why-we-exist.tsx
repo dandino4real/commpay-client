@@ -51,7 +51,7 @@ const WhyWeExist: React.FC = () => {
                         className="w-11/12"
                         src="/assets/images/secured-3d.png"
                     />
-                     <Image
+                    <Image
                         width={1000}
                         height={1000}
                         alt="group-transact"
