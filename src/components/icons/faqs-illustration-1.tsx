@@ -7,7 +7,7 @@ const FaqsIllustration1: React.FC<IconProps> = ({ ...props }) => {
             <path
                 d="M19.7806 -194C-157.114 186.521 286.972 25.82 365.142 143.649C463.995 292.654 90.9288 250.777 43.0708 448.335C2.3583 616.4 304.125 612.119 445.505 693.653"
                 stroke="url(#paint0_linear_652_872)"
-                stroke-width="16.64"
+                strokeWidth="16.64"
             />
             <defs>
                 <linearGradient
