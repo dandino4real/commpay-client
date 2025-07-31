@@ -1,5 +1,6 @@
 'use client';
 
+import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import type { LucideIcon } from 'lucide-react';
 import Link from 'next/link';
@@ -70,13 +71,13 @@ export function SupportCard({
                     <Icon className={`w-6 h-6 ${getIconColor()}`} />
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{title}</h3>
-                <p className={`text-sm mb-4 ${variant === 'default' ? 'text-gray-600' : 'text-white/90'}`}>
+                <p className={`text-sm mb-4 ${variant === 'default' ? 'text-muted-foreground' : 'text-white/90'}`}>
                     {description}
                 </p>
                 {onLinkClick ? (
-                    <button onClick={onLinkClick} className={`text-sm ${getLinkStyles()}`}>
+                    <Button onClick={onLinkClick} variant="link" className={`text-sm !px-0 ${getLinkStyles()}`}>
                         {linkText}
-                    </button>
+                    </Button>
                 ) : (
                     <Link href={linkHref} className={`text-sm ${getLinkStyles()}`}>
                         {linkText}

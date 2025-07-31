@@ -4,6 +4,7 @@ import { MessageCircle, MapPin, MessageSquare, Phone, FileText, Briefcase } from
 import { SupportCard } from './support-card';
 import { useState } from 'react';
 import { EnquiryModal } from './enquiry-modal';
+import SectionLayout from '@/components/layout/section-layout';
 
 const supportOptions = [
     {
@@ -63,26 +64,24 @@ export function SupportGrid() {
 
     return (
         <>
-            <section className="py-16 px-4 sm:px-6 lg:px-8">
-                <div className="max-w-6xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {supportOptions.map((option, index) => (
-                            <SupportCard
-                                key={index}
-                                icon={option.icon}
-                                title={option.title}
-                                description={option.description}
-                                linkText={option.linkText}
-                                linkHref={option.linkHref}
-                                variant={option.variant}
-                                onLinkClick={
-                                    option.title === 'Enquiry Form' ? () => setIsEnquiryModalOpen(true) : undefined
-                                }
-                            />
-                        ))}
-                    </div>
+            <SectionLayout className="pt-16 pb-36 px-4 sm:px-6 lg:px-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                    {supportOptions.map((option, index) => (
+                        <SupportCard
+                            key={index}
+                            icon={option.icon}
+                            title={option.title}
+                            description={option.description}
+                            linkText={option.linkText}
+                            linkHref={option.linkHref}
+                            variant={option.variant}
+                            onLinkClick={
+                                option.title === 'Enquiry Form' ? () => setIsEnquiryModalOpen(true) : undefined
+                            }
+                        />
+                    ))}
                 </div>
-            </section>
+            </SectionLayout>
 
             <EnquiryModal open={isEnquiryModalOpen} onOpenChange={setIsEnquiryModalOpen} />
         </>
