@@ -1,5 +1,10 @@
 import { Button } from '@/components/ui/button';
 import { FaqItem } from './faq-item';
+import SectionLayout from '@/components/layout/section-layout';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import HeroBgMesh from '@/components/icons/hero-bg-mesh';
+import FaqsIllustration2 from '@/components/icons/faqs-illustration-2';
+import FaqsIllustration1 from '@/components/icons/faqs-illustration-1';
 
 const faqData = [
     {
@@ -31,34 +36,38 @@ interface FaqSectionProps {
 
 export function FaqSection({ title = 'FAQs', subtitle = 'Frequently Asked Question' }: FaqSectionProps) {
     return (
-        <section className="bg-slate-800 py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <SectionLayout className="bg-slate-800 py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
             {/* Background decorative elements */}
             <div className="absolute inset-0">
-                <div className="absolute -left-32 top-0 w-64 h-64 bg-gradient-to-r from-green-500/20 to-transparent rounded-full blur-3xl"></div>
-                <div className="absolute -right-32 bottom-0 w-64 h-64 bg-gradient-to-l from-green-500/20 to-transparent rounded-full blur-3xl"></div>
+                <div className="absolute -left-32 top-0 w-64 h-64 bg-gradient-to-r from-green-500/20 to-transparent rounded-full blur-3xl" />
+                <div className="absolute -right-32 bottom-0 w-64 h-64 bg-gradient-to-l from-green-500/20 to-transparent rounded-full blur-3xl" />
             </div>
 
-            <div className="max-w-4xl mx-auto relative">
+            <HeroBgMesh className="absolute top-0 left-0" />
+            <FaqsIllustration1 className="absolute top-0 h-full left-0" />
+            <FaqsIllustration2 className="absolute top-0 h-full right-0" />
+
+            <div className="max-w-xl mx-auto relative">
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{title}</h2>
-                    <p className="text-xl text-gray-300">{subtitle}</p>
+                    <h2 className="text-4xl md:text-5xl font-bold text-secondary mb-4">{title}</h2>
+                    <p className="text-xl text-secondary">{subtitle}</p>
                 </div>
 
-                <div className="space-y-4">
+                <Accordion type="single" collapsible>
                     {faqData.map((faq, index) => (
-                        <FaqItem key={index} question={faq.question} answer={faq.answer} isExpanded={index === 0} />
+                        <AccordionItem value={faq.question} key={index}>
+                            <AccordionTrigger className="text-secondary">{faq.question}</AccordionTrigger>
+                            <AccordionContent className="text-gray-400">{faq.answer}</AccordionContent>
+                        </AccordionItem>
                     ))}
-                </div>
+                </Accordion>
 
                 <div className="text-center mt-8">
-                    <Button
-                        variant="outline"
-                        className="text-white border-gray-600 hover:bg-gray-700 hover:text-white bg-transparent"
-                    >
+                    <Button size="sm" variant="link" className='text-secondary' >
                         Load more
                     </Button>
                 </div>
             </div>
-        </section>
+        </SectionLayout>
     );
 }
