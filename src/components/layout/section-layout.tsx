@@ -7,7 +7,7 @@ export interface SectionLayoutProps extends DetailedHTMLProps<HTMLAttributes<HTM
 
 const SectionLayout: React.FC<SectionLayoutProps> = ({ className, children, containerClassName, ...props }) => {
     return (
-        <section {...props} className={cn('w-full xl:px-32', className)}>
+        <section {...props} className={cn('w-full px-5 xl:px-32', className)}>
             <div className={cn('max-w-full md:max-w-screen-md lg:max-w-screen-xl mx-auto', containerClassName)}>
                 {children}
             </div>

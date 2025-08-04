@@ -3,7 +3,7 @@ import { Star } from 'lucide-react';
 
 export default function UserSatisfactionSection() {
     return (
-        <div className="relative min-h-screen bg-[#1A233A] overflow-hidden">
+        <div className="relative xl:min-h-screen bg-[#1A233A] overflow-hidden">
             <SectionLayout className="">
                 {/* Background decorative elements */}
                 <div className="absolute inset-0">
@@ -55,7 +55,7 @@ export default function UserSatisfactionSection() {
                     </div>
 
                     {/* Stats grid */}
-                    <div className="grid grid-cols-4 gap-4 mt-12">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12">
                         <div className="bg-[#DEE8F61A]/50 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50 flex flex-col items-center">
                             <div className="text-3xl lg:text-4xl font-bold text-white mb-2">150k+</div>
                             <div className="text-slate-400 text-sm">Active Customers</div>
