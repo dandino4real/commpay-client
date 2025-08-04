@@ -123,3 +123,24 @@
         @apply bg-background text-foreground;
     }
 }
+
+
+
+/* White scrollbar for webkit browsers (Chrome, Safari, Edge) */
+.white-scrollbar::-webkit-scrollbar {
+  height: 8px;
+}
+
+.white-scrollbar::-webkit-scrollbar-track {
+  background: white;
+}
+
+.white-scrollbar::-webkit-scrollbar-thumb {
+  background: white;
+}
+
+/* Firefox scrollbar */
+.white-scrollbar {
+  scrollbar-color: white white; /* thumb color track color */
+  scrollbar-width: thin;
+}
