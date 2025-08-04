@@ -18,8 +18,8 @@ const FaqsIllustration2: React.FC<IconProps> = ({ ...props }) => {
                     y2="582.602"
                     gradientUnits="userSpaceOnUse"
                 >
-                    <stop stop-color="#6AFFB0" stop-opacity="0.39" />
-                    <stop offset="0.83" stop-color="#EBDDF9" stop-opacity="0" />
+                    <stop stopColor="#6AFFB0" stopOpacity="0.39" />
+                    <stop offset="0.83" stopColor="#EBDDF9" stopOpacity="0" />
                 </linearGradient>
             </defs>
         </svg>

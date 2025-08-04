@@ -359,7 +359,7 @@ const BoxedBackground: React.FC<IconProps> = ({ ...props }) => {
                     gradientUnits="userSpaceOnUse"
                 >
                     <stop stopColor="white" />
-                    <stop offset="1" stopColor="white" stop-opacity="0" />
+                    <stop offset="1" stopColor="white" stopOpacity="0" />
                 </linearGradient>
                 <radialGradient
                     id="paint1_radial_371_1204"
@@ -370,7 +370,7 @@ const BoxedBackground: React.FC<IconProps> = ({ ...props }) => {
                     gradientTransform="translate(170.562 988.598) rotate(-29.3932) scale(777.019 1335.47)"
                 >
                     <stop stopColor="white" />
-                    <stop offset="1" stopColor="white" stop-opacity="0" />
+                    <stop offset="1" stopColor="white" stopOpacity="0" />
                 </radialGradient>
                 <clipPath id="clip0_371_1204">
                     <rect width="1439" height="851" fill="white" transform="translate(1)" />
