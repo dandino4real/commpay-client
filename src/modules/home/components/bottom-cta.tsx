@@ -4,12 +4,12 @@ import { ArrowRight } from 'lucide-react';
 
 export default function BottomCta() {
     return (
-        <div className="py-[100px]">
+        <div className="py-[50px] md:py-[100px]">
             <div className="rounded-4xl bg-gradient-to-br from-emerald-400 via-green-500 to-emerald-600 relative overflow-hidden">
-                <div className="relative z-10 flex items-center container mx-auto px-4 py-12 lg:py-20">
-                    <div className="max-w-[70%] pl-20 gap-12 items-center">
+                <div className="relative z-10 flex items-center container mx-auto px- py-12 lg:py-20">
+                    <div className="md:max-w-[70%] md:pl-20 gap-8 md:gap-12 items-center">
                         {/* Left content */}
-                        <div className="space-y-8">
+                        <div className="space-y-8 px-5 md:px-0">
                             <div className="space-y-6">
                                 <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-white leading-tight">
                                     Powering payments for Africa&apos;s boldest businesses.
@@ -29,14 +29,16 @@ export default function BottomCta() {
                             </Button>
                         </div>
 
-                        <Image
-                            src="/assets/images/hand-holding-mobile.png"
-                            alt="Mobile payment app interface showing financial dashboard"
-                            width={400}
-                            height={400}
-                            className="w-full max-w-sm lg:max-w-md xl:max-w-lg h-auto absolute right-0 top-1/2 transform -translate-y-1/2"
-                            priority
-                        />
+                        <div className="flex justify-end lg:absolute lg:right-0 lg:top-1/2 lg:transform lg:-translate-y-1/2">
+                            <Image
+                                src="/assets/images/hand-holding-mobile.png"
+                                alt="Mobile payment app interface showing financial dashboard"
+                                width={400}
+                                height={400}
+                                className="w-full max-w-xs lg:max-w-md xl:max-w-lg h-auto"
+                                priority
+                            />
+                        </div>
                     </div>
                 </div>
             </div>

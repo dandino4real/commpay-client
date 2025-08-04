@@ -11,14 +11,14 @@ export default function WhoWeServe() {
             <div className="max-w-7xl mx-auto py-10 flex flex-col space-y-5">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
                     {/* Financial Analytics Section */}
-                    <div className="bg-gradient-to-br h-[475px] col-span-2 from-green-400 to-green-500 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
+                    <div className="bg-gradient-to-br h-[400px] md:h-[475px] col-span-2 from-green-400 to-green-500 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
                         <div className="relative z-10">
                             <h2 className="text-4xl md:text-5xl font-bold mb-6">Financial analytics</h2>
                             <p className="text-lg md:text-xl mb-8 text-green-50">
                                 Create some fun reports and charts to check out how people are spending their money.
                             </p>
                         </div>
-                        <div className="absolute -bottom-20  right-0 left-0">
+                        <div className="absolute bottom-0 md:-bottom-20  right-0 left-0">
                             <div className="relative ">
                                 <Image
                                     src="/assets/images/mobile.png"
@@ -50,7 +50,7 @@ export default function WhoWeServe() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
                     {/* Easy Card Management Section */}
 
-                    <div className="bg-white h-[431px] p-8 md:p-7 text-white relative overflow-hidden">
+                    <div className="bg-white h-[400px] md:h-[475px] p-8 md:p-7 text-white relative overflow-hidden">
                         <h2 className="text-3xl md:text-4xl font-medium mb-4 text-gray-600">
                             Easy easier card management
                         </h2>
@@ -71,7 +71,7 @@ export default function WhoWeServe() {
                     </div>
 
                     {/* Instant Transaction Alerts Section */}
-                    <div className="bg-gradient-to-br from-green-400 to-green-500 rounded-2xl p-8 md:p-8 pt-12 text-white relative overflow-hidden">
+                    <div className="bg-gradient-to-br h-[400px] md:h-[475px] from-green-400 to-green-500 rounded-2xl p-8 md:p-8 pt-12 text-white relative overflow-hidden">
                         <h2 className="text-3xl md:text-4xl font-medium mb-4">Instant transaction alerts</h2>
                         <p className="text- text-green-50 mb-8">
                             Easily manage your cards and effortlessly stay on top of all your spending.

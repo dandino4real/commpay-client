@@ -2,6 +2,7 @@ import SectionLayout from '@/components/layout/section-layout';
 import Link from 'next/link';
 import React from 'react';
 import BottomCta from './bottom-cta';
+import Image from 'next/image';
 
 export default function Footer() {
     return (
@@ -13,17 +14,19 @@ export default function Footer() {
                         {/* Logo and Description */}
                         <div className="lg:col-span-3">
                             <div className="flex items-center gap-2 mb-4">
-                                <img
+                                <Image
                                     src="/assets/images/comppay-logo-black.svg"
                                     alt="CompPay Logo"
                                     className="w-[172px] h-[32px] object-contain"
+                                    width={172}
+                                    height={32}
                                 />
                             </div>
                             <p className="text-[#343434] text-[16px] leading-relaxed max-w-sm">
                                 Streamlines international payments and currency exchange for businesses and individuals
                             </p>
                         </div>
-                        <div className="flex justify-between lg:col-span-3">
+                        <div className="flex space-y-5 flex-col md:flex-row justify-between lg:col-span-3">
                             {/* Company Links */}
                             <div className="flex-1">
                                 <h3 className="font-semibold text-[#1B1B1B] text-lg  mb-4">Company</h3>

@@ -32,18 +32,18 @@ const industries = [
 export default function IndustriesSection() {
     return (
         <SectionLayout className="">
-            <div className="max-w-7xl mx-auto py-20 ">
-                <div className="bg-[#F4FFF9] py-20">
+            <div className="max-w-7xl mx-auto py-10 md:py-20 ">
+                <div className="bg-[#F4FFF9] py-10 md:py-20">
                     {/* Header */}
-                    <div className="mb-12 px-10">
-                        <p className="text-[#646464] mb-16 font-light">Industries we serve</p>
+                    <div className="mb-12 px-5 md:px-10">
+                        <p className="text-[#646464] mb-8 md:mb-16 font-light">Industries we serve</p>
                         <div className="flex items-center justify-between">
-                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-medium text-gray-900 leading-tight">
+                            <h2 className="text-3xl md:text-5xl lg:text-6xl font-medium text-gray-900 leading-tight">
                                 Serving Bold Businesses
                                 <br />
                                 Everywhere
                             </h2>
-                            <div className="pr-20">
+                            <div className="md:pr-20">
                                 <button className="w-[70px] h-[70px] bg-[#E6FFF2] rounded-full flex items-center justify-center">
                                     <ArrowRight className="w-6 h-6 text-green-400" />
                                 </button>
@@ -52,11 +52,11 @@ export default function IndustriesSection() {
                     </div>
 
                     {/* Industry Cards */}
-                    <div className="flex gap-4 overflow-x-auto w-full pb-4 pr-10 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                    <div className="flex gap-4 overflow-x-auto w-full pb-4 pr-5 md:pr-10 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                         {industries.map((industry, index) => (
                             <div
                                 key={index}
-                                className="space-y-8 w-[509px] py-20 flex-shrink-0 bg-white p-6 pl-20 flex flex-col"
+                                className="space-y-8 w-[509px] py-10 md:py-20 flex-shrink-0 bg-white p-6 pl-10 md:pl-20 flex flex-col"
                             >
                                 <h3 className="text-2xl font-medium text-gray-800">{industry.title}</h3>
                                 <p className="text-gray-600 leading-[29.2px] text-sm">{industry.description}</p>

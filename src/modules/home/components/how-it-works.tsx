@@ -29,7 +29,7 @@ export default function HowItWorks() {
                 <h2 className="text-3xl">How it works</h2>
                 <span className="bg-[#F4FFF9] text-[#1FC16B] py-2 px-4 rounnded-sm">• Core features</span>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 px-10 py-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-8 px-5 md:px-10 py-10 md:py-20">
                 <div className="col-span-1 md:col-span-2 lg:col-span-3">
                     <div className="space-y-6 relative">
                         {items.map((item, index) => (
