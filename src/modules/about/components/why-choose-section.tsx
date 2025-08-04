@@ -1,3 +1,4 @@
+import Logo from '@/components/icons/logo';
 import SectionLayout from '@/components/layout/section-layout';
 import { Badge } from '@/components/ui/badge';
 import * as motion from 'motion/react-client';
@@ -5,7 +6,7 @@ import Image from 'next/image';
 
 export function WhyChooseSection() {
     return (
-        <SectionLayout className=" py-12 md:pt-32 px-8 sm:px-12 md:px-24 ">
+        <SectionLayout className="pb-20 pt-32 px-8 sm:px-12 md:px-24 ">
             <div className="text-center mb-12">
                 <Badge>• About Us</Badge>
 
@@ -24,13 +25,16 @@ export function WhyChooseSection() {
                 transition={{ duration: 0.6, ease: 'easeInOut' }}
                 className="flex justify-center"
             >
-                <div className="rounded-4xl overflow-hidden shadow-2xl">
+                <div className="relative rounded-4xl overflow-hidden shadow-2xl">
                     <Image
                         src="/assets/images/about-hero-image.png"
                         alt="CompPay team working together"
                         width={1036}
                         height={464}
                     />
+                    <div className='absolute bottom-0 left-8'>
+                        <Logo className='size-20 md:size-35'/>
+                    </div>
                 </div>
             </motion.div>
         </SectionLayout>

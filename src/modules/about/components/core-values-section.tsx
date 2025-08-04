@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, ArrowDown } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import SectionLayout from '@/components/layout/section-layout';
 
@@ -20,35 +20,35 @@ const coreValues: CoreValue[] = [
         id: 'integrity',
         title: 'Integrity',
         image: '/assets/images/integrity-illustration.png',
-        color: 'text-emerald-600',
+        color: 'text-#000000',
         description: 'We uphold the highest standards of honesty and transparency in all our dealings.',
     },
     {
         id: 'innovation',
         title: 'Innovation',
         image: '/assets/images/innovation-illustration.png',
-        color: 'text-emerald-600',
+        color: 'text-#000000',
         description: 'We continuously seek creative solutions to meet the evolving needs of our users.',
     },
     {
         id: 'customer-centricity',
         title: 'Customer-Centricity',
         image: '/assets/images/customer-centricity-illustration.png',
-        color: 'text-emerald-600',
+        color: 'text-#000000',
         description: 'Our users are at the heart of everything we do, we prioritize their needs and feedback.',
     },
     {
         id: 'security',
         title: 'Security',
         image: '/assets/images/security-illustration.png',
-        color: 'text-emerald-600',
+        color: 'text-#000000',
         description: 'We are committed to safeguarding user data and ensuring secure transactions.',
     },
     {
         id: 'simplicity',
         title: 'Simplicity',
         image: '/assets/images/simplicity-illustration.png',
-        color: 'text-emerald-600',
+        color: 'text-#000000',
         description: 'We bstrive to make complex financial processes straightforward and accessible.',
     },
 ];
@@ -64,37 +64,48 @@ export function CoreValuesSection() {
                 <Badge>• Core Values</Badge>
             </div>
             <div className="grid lg:grid-cols-3 gap-12 items-center">
-                <div className="space-y-6 col-span-1">
+                <div className="space-y-4 lg:space-y-6 col-span-1">
                     {coreValues.map(value => (
                         <motion.div
                             key={value.id}
-                            className={`flex items-center justify-between p-4 rounded-xl cursor-pointer transition-all duration-300 ${
-                                activeValue === value.id
-                                    ? 'bg-white shadow-lg border-l-4 border-emerald-500'
-                                    : 'hover:bg-white/50'
-                            }`}
+                            className={`flex items-center justify-between p-4 rounded-xl cursor-pointer transition-all duration-300 ${activeValue === value.id
+                                ? 'bg-white shadow-lg border-l-4 border-black'
+                                : 'hover:bg-white/50'
+                                }`}
                             onClick={() => setActiveValue(value.id)}
                             whileHover={{ scale: 1.02, y: -2 }}
                             whileTap={{ scale: 0.98 }}
                         >
                             <span
-                                className={`text-2xl font-bold transition-colors duration-300 ${
-                                    activeValue === value.id ? value.color : 'text-gray-400'
-                                }`}
+                                className={`text-2xl font-bold transition-colors duration-300 ${activeValue === value.id ? value.color : 'text-gray-400'
+                                    }`}
                             >
                                 {value.title}
                             </span>
 
                             <AnimatePresence>
                                 {activeValue === value.id && (
-                                    <motion.div
-                                        initial={{ opacity: 0, x: -10, scale: 0.8 }}
-                                        animate={{ opacity: 1, x: 0, scale: 1 }}
-                                        exit={{ opacity: 0, x: 10, scale: 0.8 }}
-                                        transition={{ duration: 0.4, ease: 'easeOut' }}
-                                    >
-                                        <ArrowRight className={`h-5 w-5 ${value.color.replace('text-', 'text-')}`} />
-                                    </motion.div>
+                                    <>
+                                        <motion.div
+                                            initial={{ opacity: 0, x: -10, scale: 0.8 }}
+                                            animate={{ opacity: 1, x: 0, scale: 1 }}
+                                            exit={{ opacity: 0, x: 10, scale: 0.8 }}
+                                            transition={{ duration: 0.4, ease: 'easeOut' }}
+                                            className="block lg:hidden"
+                                        >
+                                            <ArrowDown className={`h-5 w-5 ${value.color.replace('text-', 'text-')}`} />
+                                        </motion.div>
+                                        <motion.div
+                                            initial={{ opacity: 0, x: -10, scale: 0.8 }}
+                                            animate={{ opacity: 1, x: 0, scale: 1 }}
+                                            exit={{ opacity: 0, x: 10, scale: 0.8 }}
+                                            transition={{ duration: 0.4, ease: 'easeOut' }}
+                                            className="hidden lg:block"
+                                        >
+                                            <ArrowRight className={`h-5 w-5 ${value.color.replace('text-', 'text-')}`} />
+                                        </motion.div>
+                                    </>
+
                                 )}
                             </AnimatePresence>
                         </motion.div>

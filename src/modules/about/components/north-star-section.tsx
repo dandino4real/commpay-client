@@ -4,11 +4,11 @@ import * as motion from 'motion/react-client';
 
 export function NorthStarSection() {
     return (
-        <SectionLayout>
+        <SectionLayout className='px-8 sm:px-12 md:px-24'>
             <div className="text-center mb-16">
                 <Badge>• Our North Star</Badge>
             </div>
-            <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+            <div className="grid lg:grid-cols-3 gap-8 lg:gap-12">
                 <motion.div
                     className="bg-gradient-to-tr from-gray-100 to-white rounded-2xl p-8"
                     whileHover={{

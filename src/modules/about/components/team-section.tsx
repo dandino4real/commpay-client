@@ -77,7 +77,7 @@ export function TeamSection() {
                 ))}
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div className="px-4 sm:px-6 lg:px-8 relative">
                 <div className="mb-12">
                     <div className="flex items-center space-x-3 mb-8">
                         <Badge className="bg-transparent text-fff">• Our Team</Badge>
@@ -88,9 +88,9 @@ export function TeamSection() {
                     </div>
                 </div>
 
-                <div className="grid lg:grid-cols-2 gap-12 items-center">
+                <div className="grid lg:grid-cols-2 gap-14 items-center ">
                     <motion.div
-                        className="relative"
+                        className="relative mx-auto"
                         initial={{ scale: 1 }}
                         whileHover={{
                             scale: 1.03,
@@ -138,9 +138,9 @@ export function TeamSection() {
 
                     <motion.div className="space-y-6">
                         <motion.p
-                            className="text-lg leading-relaxed"
+                            className="text-base leading-relaxed"
                             initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
+                            animate={{ opacity: 0.9, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.5 }}
                         >
                             CompPay is led by a diverse team of professionals with expertise in fintech, software
@@ -149,9 +149,9 @@ export function TeamSection() {
                         </motion.p>
 
                         <motion.p
-                            className="text-lg leading-relaxed"
+                            className="text-base leading-relaxed"
                             initial={{ opacity: 0, y: 20 }}
-                            animate={{ opacity: 1, y: 0 }}
+                            animate={{ opacity: 0.9, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.7 }}
                         >
                             CompPay is led by a diverse team of professionals with expertise in fintech, software
@@ -164,7 +164,7 @@ export function TeamSection() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.9 }}
                         >
-                            <Button className="bg-slate-700 hover:bg-slate-600 text-white border-slate-600 group ">
+                            <Button className="bg-linear-to-t from-gray-600 to-#00000021 hover:bg-slate-600 text-white border-slate-600 drop-shadow-#FFFFFF17 group ">
                                 <motion.span
                                     className="flex items-center"
                                     whileHover={{ x: 5 }}
