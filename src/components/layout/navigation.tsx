@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
+import useMediaQuery from '@/hooks/use-media-query';
 
 import { cn } from '../../lib/utils';
 import {
@@ -18,6 +19,7 @@ import { navigationCTARoutes, navigationRoutes } from '@/constants/navigation';
 const Navigation: React.FC = () => {
     const currentRoute = useCurrentRoute();
     const [hidden, setHidden] = React.useState(false);
+    const { isMobile, isTablet } = useMediaQuery();
 
     React.useEffect(() => {
         const hero = document.getElementById('hero-section');
@@ -32,7 +34,7 @@ const Navigation: React.FC = () => {
     return (
         <NavigationMenu
             className={cn(
-                'w-full py-8 px-8 sm:px-12 md:px-24 justify-between fixed top-0 shadow-none backdrop-blur-sm transition-opacity duration-300 overflow-clip',
+                'w-full py-8 px-8 sm:px-12 md:px-24 justify-between md:fixed top-0 shadow-none md:backdrop-blur-sm transition-opacity duration-300 overflow-clip',
                 hidden ? 'opacity-0 pointer-events-none' : 'opacity-100'
             )}
         >
@@ -47,7 +49,7 @@ const Navigation: React.FC = () => {
                         )}
                     >
                         <Link href="/">
-                            <Logo />
+                            <Logo fill={isMobile || isTablet ? '#000' : '#FFF'} />
                         </Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>

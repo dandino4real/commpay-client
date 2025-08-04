@@ -44,14 +44,14 @@ const cardData: CardData[] = [
                     height={1000}
                     alt="vscode"
                     src={`/assets/images/vscode1.png`}
-                    className="z-10 absolute -right-16"
+                    className="z-10 absolute right-0 md:-right-16 w-2/5"
                 />
                 <Image
                     width={500}
                     height={1000}
                     alt="code-editor"
                     src={`/assets/images/editor1.png`}
-                    className="z-20 absolute right-8 bottom-10"
+                    className="z-20 absolute right-8 top-20 md:bottom-10 w-2/5"
                 />
                 <CurvyLineIllustration className="absolute bottom-0 left-0" />
             </div>
@@ -77,8 +77,8 @@ const cardData: CardData[] = [
                     width={400}
                     height={1000}
                     alt="fastmoney"
-                    className="z-10 absolute"
                     src={`/assets/images/fast-money-3d.png`}
+                    className="z-10 absolute left-0 right-0 w-1/2 top-1/2 -translate-y-1/2 md:w-1/3"
                 />
                 <CurvyLineIllustration className="absolute bottom-0 left-0" />
             </div>
@@ -105,9 +105,9 @@ const cardData: CardData[] = [
                     height={1000}
                     alt="vscode"
                     src={`/assets/images/badge-check.png`}
-                    className="z-10 absolute"
+                    className="z-10 absolute right-0 top-1/2 -translate-y-1/2 w-2/5"
                 />
-                <CurvyLineIllustration className="absolute bottom-0 right-20" />
+                <CurvyLineIllustration className="absolute w-full bottom-0 right-20" />
             </div>
         ),
     },
@@ -133,7 +133,7 @@ const cardData: CardData[] = [
                     height={1000}
                     alt="vscode"
                     src={`/assets/images/payment-transaction-hand.png`}
-                    className="z-10 absolute bottom-0"
+                    className="z-10 absolute bottom-0 left-0 w-2/3 md:w-1/2"
                 />
                 <CurvyLineIllustration className="absolute bottom-0 left-0" />
             </div>
@@ -160,7 +160,7 @@ const cardData: CardData[] = [
                     height={1000}
                     alt="code-editor"
                     src={`/assets/images/compay-3d.png`}
-                    className="z-20 absolute right-8 bottom-10"
+                    className="z-20 absolute right-8 top-1/2 -translate-y-1/2 w-2/5 md:w-1/3"
                 />
                 <CurvyLineIllustration className="absolute bottom-0 left-0" />
             </div>
@@ -170,28 +170,46 @@ const cardData: CardData[] = [
 
 const StackScrollCards: React.FC = () => {
     return (
-        <SectionLayout className="px-8 pb-16 sm:px-12 md:px-36">
-            <div className="relative flex flex-col gap-16">
+        <SectionLayout className="px-4 pb-16 md:px-36">
+            <div className="relative flex flex-col gap-4 md:gap-16">
                 {cardData.map((card, index) => (
                     <div
                         key={card.title}
                         className={cn(
-                            'sticky top-0 mb-6 p-20 rounded-3xl overflow-hidden shadow-xl transition-all duration-300 min-h-[496px] flex flex-col md:flex-row justify-between md:gap-24',
+                            'sticky top-0 mb-6 p-6 md:p-20 rounded-3xl overflow-hidden shadow-xl transition-all duration-300 h-max md:min-h-[496px] flex justify-between sm:gap-12 lg:gap-24',
                             card.bgClass,
-                            card.variant === 2 ? 'md:flex-row-reverse' : ''
+                            card.variant === 2 ? 'flex-row-reverse' : ''
                         )}
                         style={{
                             zIndex: index + 1,
                         }}
                     >
                         {/* Content */}
-                        <div className={'relative z-10 flex flex-col h-full w-full'}>
-                            <div className={cn('space-y-8 max-w-xl', card.variant === 2 && 'text-right')}>
+                        <div
+                            className={cn(
+                                'relative z-30 flex flex-col h-full w-1/2 md:w-2/3',
+                                card.variant === 2 && 'items-end'
+                            )}
+                        >
+                            <div
+                                className={cn(
+                                    'space-y-4 md:space-y-8',
+                                    card.variant === 2 && 'flex flex-col text-right justify-end'
+                                )}
+                            >
                                 <div className={cn('w-full flex', card.variant === 2 && 'justify-end')}>
                                     {card.icon}
                                 </div>
-                                <h3 className="text-2xl md:text-4xl font-semibold text-white">{card.title}</h3>
-                                <p className="text-white/80">{card.description}</p>
+                                <div className={cn('w-full flex', card.variant === 2 && 'justify-end')}>
+                                    <h3 className="text-base md:text-4xl font-semibold text-white z-30 w-full">
+                                        {card.title}
+                                    </h3>
+                                </div>
+                                <div className={cn('w-full flex', card.variant === 2 && 'justify-end')}>
+                                    <p className="text-xs md:text-base text-white/80 md:w-full">
+                                        {card.description}
+                                    </p>
+                                </div>
                                 <Link href="/signup" passHref>
                                     <Button variant={card.variant === 2 ? 'default' : 'secondary'}>
                                         {card.buttonText}
@@ -200,7 +218,7 @@ const StackScrollCards: React.FC = () => {
                                 </Link>
                             </div>
                         </div>
-                        {card.illustration}
+                        <div>{card.illustration}</div>
                     </div>
                 ))}
             </div>
