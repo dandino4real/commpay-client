@@ -21,7 +21,7 @@ import { navigationCTARoutes, navigationMoreRoutes, navigationRoutes } from '@/c
 const Navigation: React.FC = () => {
     const currentRoute = useCurrentRoute();
     const [hidden, setHidden] = React.useState(false);
-    const { isMobile, isTablet } = useMediaQuery();
+    const { isMobile } = useMediaQuery();
 
     React.useEffect(() => {
         const hero = document.getElementById('hero-section');

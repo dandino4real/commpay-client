@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import Navigation from '@/components/layout/navigation';
 import Footer from '@/modules/home/components/footer';
 
-const plusJakartaSans = Plus_Jakarta_Sans();
+const plusJakartaSans = Plus_Jakarta_Sans({ style: 'normal', subsets: ['latin'] });
 
 export const metadata: Metadata = {
     title: 'CompPay',

@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button';
-import { FaqItem } from './faq-item';
 import SectionLayout from '@/components/layout/section-layout';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import HeroBgMesh from '@/components/icons/hero-bg-mesh';
@@ -63,7 +62,7 @@ export function FaqSection({ title = 'FAQs', subtitle = 'Frequently Asked Questi
                 </Accordion>
 
                 <div className="text-center mt-8">
-                    <Button size="sm" variant="link" className='text-secondary' >
+                    <Button size="sm" variant="link" className="text-secondary">
                         Load more
                     </Button>
                 </div>
