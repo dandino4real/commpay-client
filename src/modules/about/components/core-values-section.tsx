@@ -40,7 +40,7 @@ const coreValues: CoreValue[] = [
     {
         id: 'security',
         title: 'Security',
-        image: '/assets/images/security-illustration.png',
+        image: '/assets/images/secured-3d.png',
         color: 'text-#000000',
         description: 'We are committed to safeguarding user data and ensuring secure transactions.',
     },
