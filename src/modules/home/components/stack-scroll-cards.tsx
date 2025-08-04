@@ -176,7 +176,7 @@ const StackScrollCards: React.FC = () => {
                     <div
                         key={card.title}
                         className={cn(
-                            'sticky top-0 mb-6 p-6 md:p-20 rounded-3xl overflow-hidden shadow-xl transition-all duration-300 h-max md:min-h-[496px] flex justify-between sm:gap-12 lg:gap-24',
+                            'sticky top-0 mb-6 p-6 md:p-20 rounded-3xl overflow-hidden shadow-xl transition-all duration-300 h-[288px] md:min-h-[496px] flex justify-between sm:gap-12 lg:gap-24',
                             card.bgClass,
                             card.variant === 2 ? 'flex-row-reverse' : ''
                         )}

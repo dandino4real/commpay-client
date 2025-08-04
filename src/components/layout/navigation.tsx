@@ -10,11 +10,13 @@ import {
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
+    NavigationMenuTrigger,
+    NavigationMenuContent,
     navigationMenuTriggerStyle,
 } from '../ui/navigation-menu';
 import Logo from '../icons/logo';
 import { Button } from '../ui/button';
-import { navigationCTARoutes, navigationRoutes } from '@/constants/navigation';
+import { navigationCTARoutes, navigationMoreRoutes, navigationRoutes } from '@/constants/navigation';
 
 const Navigation: React.FC = () => {
     const currentRoute = useCurrentRoute();
@@ -34,11 +36,11 @@ const Navigation: React.FC = () => {
     return (
         <NavigationMenu
             className={cn(
-                'w-full py-8 px-8 sm:px-12 md:px-24 justify-between md:fixed top-0 shadow-none md:backdrop-blur-sm transition-opacity duration-300 overflow-clip',
+                'w-full py-8 px-8 sm:px-12 md:px-24 justify-between md:fixed z-50 top-0 shadow-none md:backdrop-blur-sm transition-opacity duration-300',
                 hidden ? 'opacity-0 pointer-events-none' : 'opacity-100'
             )}
         >
-            <HeroBgMesh className="absolute top-0 left-0" />
+            <HeroBgMesh className="absolute top-0 left-0 hidden lg:block" />
             <NavigationMenuList className="w-full flex justify-between">
                 <NavigationMenuItem>
                     <NavigationMenuLink
@@ -49,13 +51,78 @@ const Navigation: React.FC = () => {
                         )}
                     >
                         <Link href="/">
-                            <Logo fill={isMobile || isTablet ? '#000' : '#FFF'} />
+                            <Logo fill={isMobile ? '#000' : '#FFF'} />
                         </Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
                 <div className="hidden md:flex space-x-2 items-center">
                     {navigationRoutes.map((item, index) => {
                         const isActive = currentRoute?.route === item.route;
+
+                        if (item.children) {
+                            return (
+                                <NavigationMenuItem key={`${item.route}-${index}`}>
+                                    <NavigationMenuTrigger className={`${isActive ? 'bg-accent' : ''} text-white`}>
+                                        {item.label}
+                                    </NavigationMenuTrigger>
+                                    <NavigationMenuContent className="h-[calc(100vh-6rem)]">
+                                        <ul className="grid gap-2 grid-cols-3 w-5xl h-full">
+                                            <ScrollArea className="h-[calc(100vh-6rem)] col-span-2">
+                                                <li className="grid grid-cols-1 gap-4 w-full p-6">
+                                                    {item.children
+                                                        .filter(item => item.title !== 'More')
+                                                        .map(section => (
+                                                            <div
+                                                                key={section.title}
+                                                                className="not-last:border-b not-last:border-b-border py-6 space-y-6"
+                                                            >
+                                                                <h4 className="mb-2 font-bold text-muted-foreground leading-none ml-3">
+                                                                    {section.title}
+                                                                </h4>
+                                                                <ul className="grid grid-cols-2 gap-2">
+                                                                    {section.items.map(subItem => (
+                                                                        <ListItem
+                                                                            key={subItem.title}
+                                                                            title={subItem.title}
+                                                                            href={subItem.route}
+                                                                            render={subItem?.render}
+                                                                            className="hover:bg-accent/10"
+                                                                        >
+                                                                            {subItem.description}
+                                                                        </ListItem>
+                                                                    ))}
+                                                                </ul>
+                                                            </div>
+                                                        ))}
+                                                </li>
+                                            </ScrollArea>
+                                            <li className="col-span-1 bg-gray-100 h-full p-6 relative">
+                                                <NavigationMenuLink>
+                                                    <h4 className="mb-2 font-semibold text-muted-foreground leading-none ml-2">
+                                                        {navigationMoreRoutes.title}
+                                                    </h4>
+                                                    <ul className="gap-2">
+                                                        {navigationMoreRoutes.items.map(section => (
+                                                            <div key={section.title}>
+                                                                <ListItem
+                                                                    title=""
+                                                                    key={section.title}
+                                                                    href={section.route}
+                                                                    className="hover:bg-accent/10"
+                                                                >
+                                                                    {section.title}
+                                                                </ListItem>
+                                                            </div>
+                                                        ))}
+                                                    </ul>
+                                                </NavigationMenuLink>
+                                                <LogoMuted className="absolute bottom-0 right-0" />
+                                            </li>
+                                        </ul>
+                                    </NavigationMenuContent>
+                                </NavigationMenuItem>
+                            );
+                        }
 
                         return (
                             <NavigationMenuItem
@@ -98,22 +165,29 @@ const Navigation: React.FC = () => {
     );
 };
 
-const ListItem = React.forwardRef<React.ElementRef<'a'>, React.ComponentPropsWithoutRef<'a'>>(
-    ({ className, title, children, ...props }, ref) => {
+interface ListItemProps extends React.ComponentPropsWithoutRef<'a'> {
+    title: string;
+    href: string;
+    render?: React.ReactNode;
+}
+
+const ListItem = React.forwardRef<React.ElementRef<'a'>, ListItemProps>(
+    ({ className, title, children, href, render, ...props }, ref) => {
         return (
             <li>
-                <NavigationMenuLink asChild>
-                    <a
+                <NavigationMenuLink asChild className={className}>
+                    <Link
                         ref={ref}
+                        href={href}
                         className={cn(
-                            'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground',
-                            className
+                            'block select-none space-y-3 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground'
                         )}
                         {...props}
                     >
-                        <div className="text-sm font-medium leading-none">{title}</div>
-                        <p className="line-clamp-2 text-sm leading-snug text-white">{children}</p>
-                    </a>
+                        {title && <div className="text-sm font-medium leading-none">{title}</div>}
+                        {children && <p className="line-clamp-2 text-sm leading-snug text-gray-400">{children}</p>}
+                        {render}
+                    </Link>
                 </NavigationMenuLink>
             </li>
         );
@@ -129,6 +203,8 @@ import { MenuIcon } from 'lucide-react';
 import useCurrentRoute from '../../hooks/use-current-route';
 import SupportIcon from '../icons/support';
 import HeroBgMesh from '../icons/hero-bg-mesh';
+import { ScrollArea } from '../ui/scroll-area';
+import LogoMuted from '../icons/logo-muted';
 
 const MobileNavigation: React.FC<{ currentRoute: ReturnType<typeof useCurrentRoute> }> = ({ currentRoute }) => {
     return (
@@ -136,13 +212,33 @@ const MobileNavigation: React.FC<{ currentRoute: ReturnType<typeof useCurrentRou
             <SheetTrigger asChild className="md:hidden cursor-pointer">
                 <MenuIcon className="w-8 h-8 text-foreground" />
             </SheetTrigger>
-            <SheetContent className="flex flex-col justify-between">
+            <SheetContent className="flex flex-col justify-between py-12">
                 <div className="space-y-6">
                     {navigationRoutes.map((item, index) => {
                         const isActive = currentRoute?.route === item.route;
 
                         return (
-                            <NavigationMenuItem key={`${item.route}-${index}`} className={'text-center list-none'}>
+                            <NavigationMenuItem key={`${item.route}-${index}`} className={'list-none'}>
+                                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                                    <Link href={item.route}>
+                                        <SheetClose asChild>
+                                            <Button
+                                                variant="ghost"
+                                                className={`${isActive && 'bg-accent rounded-md'} `}
+                                            >
+                                                {item.label}
+                                            </Button>
+                                        </SheetClose>
+                                    </Link>
+                                </NavigationMenuLink>
+                            </NavigationMenuItem>
+                        );
+                    })}
+                    {navigationCTARoutes.map((item, index) => {
+                        const isActive = currentRoute?.route === item.route;
+
+                        return (
+                            <NavigationMenuItem key={`${item.route}-${index}`} className={'list-none'}>
                                 <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                                     <Link href={item.route}>
                                         <SheetClose asChild>
@@ -159,15 +255,6 @@ const MobileNavigation: React.FC<{ currentRoute: ReturnType<typeof useCurrentRou
                         );
                     })}
                 </div>
-                <NavigationMenuItem className="text-center list-none">
-                    <NavigationMenuLink asChild className={cn(navigationMenuTriggerStyle(), 'px-0')}>
-                        <Link href="/sign-up">
-                            <SheetClose asChild>
-                                <Button> Create free account</Button>
-                            </SheetClose>
-                        </Link>
-                    </NavigationMenuLink>
-                </NavigationMenuItem>
             </SheetContent>
         </Sheet>
     );
