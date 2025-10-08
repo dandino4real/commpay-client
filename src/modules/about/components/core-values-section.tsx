@@ -40,7 +40,7 @@ const coreValues: CoreValue[] = [
     {
         id: 'security',
         title: 'Security',
-        image: '/assets/images/security-illustration.png',
+        image: '/assets/images/secured-3d.png',
         color: 'text-#000000',
         description: 'We are committed to safeguarding user data and ensuring secure transactions.',
     },
@@ -77,7 +77,7 @@ export function CoreValuesSection() {
                             whileTap={{ scale: 0.98 }}
                         >
                             <span
-                                className={`text-2xl font-bold transition-colors duration-300 ${activeValue === value.id ? value.color : 'text-gray-400'
+                                className={`text-base sm:text-2xl font-bold transition-colors duration-300 ${activeValue === value.id ? value.color : 'text-gray-400'
                                     }`}
                             >
                                 {value.title}
@@ -113,7 +113,7 @@ export function CoreValuesSection() {
                 </div>
 
                 <motion.div className="relative flex justify-center col-span-2 bg-gray-100 p-8 rounded-xl shadow-lg bg-[url('/assets/images/core-values-bg.png')] bg-cover bg-center ">
-                    <div className="w-full max-w-md ">
+                    <div className="w-full max-w-full sm:max-w-md">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeValue}
@@ -126,7 +126,7 @@ export function CoreValuesSection() {
                                     damping: 20,
                                     opacity: { duration: 0.3 },
                                 }}
-                                className="relative w-[420px] h-[420px] rounded-3xl overflow-hidden"
+                                 className="relative w-full aspect-square sm:w-[420px] sm:h-[420px] rounded-3xl overflow-hidden"
                             >
                                 <div className="relative rounded-3xl p-8 ">
                                     <Image
@@ -153,7 +153,7 @@ export function CoreValuesSection() {
                                 damping: 18,
                                 opacity: { duration: 0.3 },
                             }}
-                            className="absolute bottom-28 left-10 max-w-[340px] bg-white/80 backdrop-blur-md rounded-xl p-4 shadow-lg"
+                            className="absolute bottom-8 sm:bottom-28 sm:left-10 max-w-[340px] bg-white/80 backdrop-blur-md rounded-xl p-4 shadow-lg"
                         >
                             <div className="bg-gray-100 rounded-3xl px-2 py-4">
                                 <p className="text-sm text-gray-700 leading-relaxed">{activeValueData.description}</p>
