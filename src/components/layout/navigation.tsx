@@ -18,10 +18,14 @@ import Logo from '../icons/logo';
 import { Button } from '../ui/button';
 import { navigationCTARoutes, navigationMoreRoutes, navigationRoutes } from '@/constants/navigation';
 
+const whiteBGPages = ['/contact-us', '/about'];
+
 const Navigation: React.FC = () => {
     const currentRoute = useCurrentRoute();
     const [hidden, setHidden] = React.useState(false);
     const { isMobile } = useMediaQuery();
+
+    const isWhiteBG = whiteBGPages.includes(currentRoute?.route as string);
 
     React.useEffect(() => {
         const hero = document.getElementById('hero-section');
@@ -51,7 +55,7 @@ const Navigation: React.FC = () => {
                         )}
                     >
                         <Link href="/">
-                            <Logo fill={isMobile ? '#000' : '#FFF'} />
+                            <Logo fill={isMobile || isWhiteBG ? '#000' : '#FFF'} />
                         </Link>
                     </NavigationMenuLink>
                 </NavigationMenuItem>
@@ -62,7 +66,11 @@ const Navigation: React.FC = () => {
                         if (item.children) {
                             return (
                                 <NavigationMenuItem key={`${item.route}-${index}`}>
-                                    <NavigationMenuTrigger className={`${isActive ? 'bg-accent' : ''} text-white`}>
+                                    <NavigationMenuTrigger
+                                        className={`${isActive ? 'bg-accent' : ''} ${
+                                            isWhiteBG ? 'text-foreground' : 'text-white'
+                                        }`}
+                                    >
                                         {item.label}
                                     </NavigationMenuTrigger>
                                     <NavigationMenuContent className="h-[calc(100vh-6rem)]">
@@ -130,7 +138,12 @@ const Navigation: React.FC = () => {
                                 className={`${isActive ? 'bg-accent rounded-md' : 'text-white'}`}
                             >
                                 <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                    <Link href={item.route}>{item.label}</Link>
+                                    <Link
+                                        className={` ${isWhiteBG ? 'text-foreground' : 'text-white'}`}
+                                        href={item.route}
+                                    >
+                                        {item.label}
+                                    </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                         );
@@ -146,7 +159,12 @@ const Navigation: React.FC = () => {
                                 className={`${isActive ? 'bg-accent rounded-md' : 'text-white'}`}
                             >
                                 <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                    <Link href={item.route}>{item.label}</Link>
+                                    <Link
+                                        className={`${isWhiteBG ? 'text-foreground' : 'text-white'}`}
+                                        href={item.route}
+                                    >
+                                        {item.label}
+                                    </Link>
                                 </NavigationMenuLink>
                             </NavigationMenuItem>
                         );
@@ -155,7 +173,7 @@ const Navigation: React.FC = () => {
                         className={`${currentRoute?.route === 'contact-us' ? 'bg-accent rounded-md' : 'text-white'}`}
                     >
                         <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                            <Link href="contact-us"> {<SupportIcon />} </Link>
+                            <Link href="contact-us">{<SupportIcon fill={`${isWhiteBG ? 'black' : 'white'}`} />}</Link>
                         </NavigationMenuLink>
                     </NavigationMenuItem>
                 </div>
