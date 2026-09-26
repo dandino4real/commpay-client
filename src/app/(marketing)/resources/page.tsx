@@ -1,9 +1,8 @@
 import React from 'react';
 import SectionLayout from '@/components/layout/section-layout';
 import HeroBgMesh from '@/components/icons/hero-bg-mesh';
-import { BookOpen, FileText, Code, Video, ArrowRight, Terminal } from 'lucide-react';
+import { FileText, Code, Video, ArrowRight, Terminal } from 'lucide-react';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
 
 const ResourcesPage = () => {
     return (

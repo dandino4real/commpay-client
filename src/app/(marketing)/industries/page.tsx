@@ -3,7 +3,6 @@ import SectionLayout from '@/components/layout/section-layout';
 import HeroBgMesh from '@/components/icons/hero-bg-mesh';
 import { ArrowRight, ShoppingCart, Laptop, Globe, Users, Zap, ShieldCheck } from 'lucide-react';
 import Link from 'next/link';
-import { cn } from '@/lib/utils';
 
 const IndustriesPage = () => {
     return (

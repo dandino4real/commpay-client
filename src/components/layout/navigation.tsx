@@ -231,8 +231,6 @@ import { Sheet, SheetClose, SheetContent, SheetTrigger } from '../../components/
 import { MenuIcon } from 'lucide-react';
 import useCurrentRoute from '../../hooks/use-current-route';
 import SupportIcon from '../icons/support';
-import HeroBgMesh from '../icons/hero-bg-mesh';
-import { ScrollArea } from '../ui/scroll-area';
 import LogoMuted from '../icons/logo-muted';
 
 const MobileNavigation: React.FC<{ currentRoute: ReturnType<typeof useCurrentRoute> }> = ({ currentRoute }) => {
