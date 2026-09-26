@@ -18,33 +18,36 @@ import Logo from '../icons/logo';
 import { Button } from '../ui/button';
 import { navigationCTARoutes, navigationMoreRoutes, navigationRoutes } from '@/constants/navigation';
 
-const whiteBGPages = ['/contact-us', '/about'];
+const whiteBGPages = ['/about'];
 
 const Navigation: React.FC = () => {
     const currentRoute = useCurrentRoute();
-    const [hidden, setHidden] = React.useState(false);
+    const [scrolled, setScrolled] = React.useState(false);
     const { isMobile } = useMediaQuery();
 
     const isWhiteBG = whiteBGPages.includes(currentRoute?.route as string);
 
     React.useEffect(() => {
-        const hero = document.getElementById('hero-section');
-        const heroHeight = hero ? hero.offsetHeight : 600; // fallback height
         const onScroll = () => {
-            setHidden(window.scrollY > heroHeight);
+            setScrolled(window.scrollY > 20);
         };
         window.addEventListener('scroll', onScroll);
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
     return (
-        <NavigationMenu
-            className={cn(
-                'w-full py-8 px-8 sm:px-12 md:px-24 justify-between md:fixed z-50 top-0 shadow-none md:backdrop-blur-sm transition-opacity duration-300',
-                hidden ? 'opacity-0 pointer-events-none' : 'opacity-100'
-            )}
-        >
-            <HeroBgMesh className="absolute top-0 left-0 hidden lg:block" />
+        <div className={cn(
+            'fixed top-0 left-0 right-0 z-50 flex justify-center px-4 transition-all duration-500 pointer-events-none',
+            scrolled ? 'pt-2 md:pt-4' : 'pt-4 md:pt-6'
+        )}>
+            <NavigationMenu
+                className={cn(
+                    'w-full max-w-6xl justify-between rounded-full border transition-all duration-500 pointer-events-auto',
+                    scrolled 
+                        ? (isWhiteBG ? 'bg-white/80 backdrop-blur-xl border-black/10 py-3 px-6 shadow-xl' : 'bg-[#181a29]/80 backdrop-blur-xl border-white/10 py-3 px-6 shadow-xl')
+                        : 'bg-transparent border-transparent py-4 px-4 md:px-8 shadow-none'
+                )}
+            >
             <NavigationMenuList className="w-full flex justify-between">
                 <NavigationMenuItem>
                     <NavigationMenuLink
@@ -73,18 +76,15 @@ const Navigation: React.FC = () => {
                                     >
                                         {item.label}
                                     </NavigationMenuTrigger>
-                                    <NavigationMenuContent className="h-[calc(100vh-6rem)]">
-                                        <ul className="grid gap-2 grid-cols-3 w-5xl h-full">
-                                            <ScrollArea className="h-[calc(100vh-6rem)] col-span-2">
-                                                <li className="grid grid-cols-1 gap-4 w-full p-6">
+                                    <NavigationMenuContent className="rounded-xl overflow-hidden shadow-2xl border-none">
+                                        <ul className="grid grid-cols-3 w-[800px] lg:w-[950px] bg-white max-h-[75vh] overflow-y-auto">
+                                            <li className="col-span-2 p-5 md:p-6">
+                                                <div className="flex flex-col gap-6 w-full">
                                                     {item.children
                                                         .filter(item => item.title !== 'More')
                                                         .map(section => (
-                                                            <div
-                                                                key={section.title}
-                                                                className="not-last:border-b not-last:border-b-border py-6 space-y-6"
-                                                            >
-                                                                <h4 className="mb-2 font-bold text-muted-foreground leading-none ml-3">
+                                                            <div key={section.title} className="space-y-4">
+                                                                <h4 className="font-bold text-sm tracking-wide text-muted-foreground uppercase ml-3">
                                                                     {section.title}
                                                                 </h4>
                                                                 <ul className="grid grid-cols-2 gap-2">
@@ -94,7 +94,7 @@ const Navigation: React.FC = () => {
                                                                             title={subItem.title}
                                                                             href={subItem.route}
                                                                             render={subItem?.render}
-                                                                            className="hover:bg-accent/10"
+                                                                            className="hover:bg-zinc-50 group"
                                                                         >
                                                                             {subItem.description}
                                                                         </ListItem>
@@ -102,29 +102,31 @@ const Navigation: React.FC = () => {
                                                                 </ul>
                                                             </div>
                                                         ))}
-                                                </li>
-                                            </ScrollArea>
-                                            <li className="col-span-1 bg-gray-100 h-full p-6 relative">
-                                                <NavigationMenuLink>
-                                                    <h4 className="mb-2 font-semibold text-muted-foreground leading-none ml-2">
+                                                </div>
+                                            </li>
+                                            <li className="col-span-1 bg-zinc-50/80 p-5 md:p-6 relative border-l">
+                                                <div className="w-full">
+                                                    <h4 className="mb-6 font-bold text-sm tracking-wide text-muted-foreground uppercase ml-3">
                                                         {navigationMoreRoutes.title}
                                                     </h4>
-                                                    <ul className="gap-2">
+                                                    <ul className="gap-2 flex flex-col">
                                                         {navigationMoreRoutes.items.map(section => (
                                                             <div key={section.title}>
                                                                 <ListItem
                                                                     title=""
                                                                     key={section.title}
                                                                     href={section.route}
-                                                                    className="hover:bg-accent/10"
+                                                                    className="hover:bg-zinc-100/50 py-2"
                                                                 >
-                                                                    {section.title}
+                                                                    <span className="text-zinc-600 group-hover:text-zinc-900 font-medium transition-colors">
+                                                                        {section.title}
+                                                                    </span>
                                                                 </ListItem>
                                                             </div>
                                                         ))}
                                                     </ul>
-                                                </NavigationMenuLink>
-                                                <LogoMuted className="absolute bottom-0 right-0" />
+                                                </div>
+                                                <LogoMuted className="absolute bottom-8 right-8 opacity-50" />
                                             </li>
                                         </ul>
                                     </NavigationMenuContent>
@@ -151,21 +153,29 @@ const Navigation: React.FC = () => {
                 </div>
                 <div className="hidden md:flex space-x-2 items-center">
                     {navigationCTARoutes.map((item, index) => {
-                        const isActive = currentRoute?.route === item.route;
+                        const isSignUp = item.route === '/signup';
 
                         return (
                             <NavigationMenuItem
                                 key={`${item.route}-${index}`}
-                                className={`${isActive ? 'bg-accent rounded-md' : 'text-white'}`}
+                                className="ml-2"
                             >
-                                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                                    <Link
-                                        className={`${isWhiteBG ? 'text-foreground' : 'text-white'}`}
-                                        href={item.route}
-                                    >
-                                        {item.label}
+                                {isSignUp ? (
+                                    <Link href={item.route}>
+                                        <Button size="sm" variant="default" className="rounded-full shadow-lg h-9 px-6 text-sm">
+                                            {item.label}
+                                        </Button>
                                     </Link>
-                                </NavigationMenuLink>
+                                ) : (
+                                    <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                                        <Link
+                                            className={`${isWhiteBG ? 'text-foreground hover:text-accent' : 'text-white hover:text-accent'}`}
+                                            href={item.route}
+                                        >
+                                            {item.label}
+                                        </Link>
+                                    </NavigationMenuLink>
+                                )}
                             </NavigationMenuItem>
                         );
                     })}
@@ -179,7 +189,8 @@ const Navigation: React.FC = () => {
                 </div>
                 <MobileNavigation currentRoute={currentRoute} />
             </NavigationMenuList>
-        </NavigationMenu>
+            </NavigationMenu>
+        </div>
     );
 };
 

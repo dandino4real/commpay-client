@@ -6,8 +6,6 @@ import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 
 import { cn } from '@/lib/utils';
-import Navigation from '@/components/layout/navigation';
-import Footer from '@/modules/home/components/footer';
 
 const plusJakartaSans = Plus_Jakarta_Sans({ style: 'normal', subsets: ['latin'] });
 
@@ -20,9 +18,7 @@ const RootLayout: React.FC<Readonly<{ children: React.ReactNode }>> = ({ childre
     return (
         <html lang="en">
             <body className={cn(plusJakartaSans.className)}>
-                <Navigation />
                 {children}
-                <Footer />
             </body>
         </html>
     );

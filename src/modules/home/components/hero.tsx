@@ -8,8 +8,10 @@ import UpRightIcon from '@/components/icons/uprighticon';
 import HeroBgMesh from '@/components/icons/hero-bg-mesh';
 import Image from 'next/image';
 import useMediaQuery from '@/hooks/use-media-query';
+import { useRouter } from 'next/navigation';
 
 const Hero: React.FC = () => {
+    const router = useRouter();
     const { isMobile, isTablet } = useMediaQuery();
     return (
         <SectionLayout
@@ -29,7 +31,7 @@ const Hero: React.FC = () => {
                     </span>
                 )}
             </h1>
-            <Button className="gap-4 z-10" variant="default">
+            <Button className="gap-4 z-10" variant="default" onClick={() => router.push('/signup')}>
                 Get Started
                 <span>
                     <UpRightIcon />
